@@ -1,6 +1,7 @@
 package com.example.capsule
 
 import android.os.Bundle
+import android.util.Log
 import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -19,6 +20,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import kotlin.time.Duration.Companion.minutes
 
 
@@ -70,7 +72,7 @@ class CapsuleActivity : AppCompatActivity() {
             viewModel.setTimerFlow(2.minutes.inWholeSeconds)
                 .flowOn(Dispatchers.IO)
                 .onEach { setUpTimerView(it) }
-                .onCompletion { showTimeOverDialog() }
+                .onCompletion {  showTimeOverDialog() }
                 .collect()
         }
     }
@@ -104,14 +106,18 @@ class CapsuleActivity : AppCompatActivity() {
     }
 
     private fun showTimeOverDialog() {
-        confirmDialog
-            .setTitle("Time Over !")
-            .setMessage("Don't worry, You can come back again !")
-            .setCancelable(false)
-            .setPositiveButton("Exit") { p0, p1 ->
-                finish()
-            }
-            .show()
+        try {
+            confirmDialog
+                .setTitle("Time Over !")
+                .setMessage("Don't worry, You can come back again !")
+                .setCancelable(false)
+                .setPositiveButton("Exit") { p0, p1 ->
+                    finish()
+                }
+                .show()
+        }catch (e : Exception){
+            Log.e("CapsuleActivity",e.toString())
+        }
     }
 
     private fun setUpTabLayout() {
@@ -147,6 +153,10 @@ class CapsuleActivity : AppCompatActivity() {
 
     fun changeTab(index: Int) {
         binding.tabs.getTabAt(index)?.select()
+    }
+
+    override fun onBackPressed() {
+
     }
 
 }
