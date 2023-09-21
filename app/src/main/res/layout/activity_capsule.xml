@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/linearOrderHeader"
+        app:tabSelectedTextColor="@color/solid_blue"
         app:tabIndicatorColor="@color/solid_blue"
         app:tabIndicatorFullWidth="true"
         app:tabTextAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Header"

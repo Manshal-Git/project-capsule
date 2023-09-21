@@ -34,6 +34,12 @@ class CapsuleActivity : AppCompatActivity() {
 
     private val viewModel by viewModels<CapsuleViewModel>()
 
+    val fragments = listOf(
+        VideoFragment.newInstance(),
+        NotesFragment.newInstance(),
+        QuizFragment.newInstance()
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCapsuleBinding.inflate(layoutInflater)
@@ -127,6 +133,9 @@ class CapsuleActivity : AppCompatActivity() {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     // hide tab layout for last tab (Quiz)
                     viewModel.setIsLastTab(selectedTabPosition == tabCount - 1)
+                    // pausing first fragment(VideoFragment) to handle viewView behaviour
+                    if(selectedTabPosition !=  0)
+                        fragments.first().onPause()
                 }
 
                 override fun onTabUnselected(tab: TabLayout.Tab?) {}
@@ -136,11 +145,6 @@ class CapsuleActivity : AppCompatActivity() {
     }
 
     private fun setUpViewPager() {
-        val fragments = listOf(
-            VideoFragment.newInstance(),
-            NotesFragment.newInstance(),
-            QuizFragment.newInstance()
-        )
         val capsulePagerAdapter = CapsulePagerAdapter(
             this,
             fragments,
@@ -156,7 +160,7 @@ class CapsuleActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-
+        showExitConfirmDialog()
     }
 
 }

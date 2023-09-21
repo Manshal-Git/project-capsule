@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.MediaController
+import android.widget.Toast
 import com.example.capsule.CapsuleActivity
 import com.example.capsule.NextButtonFragment
 import com.example.capsule.R
@@ -21,6 +22,7 @@ class VideoFragment : Fragment() {
 
     private lateinit var binding: FragmentVideoBinding
     private lateinit var parentActivity: CapsuleActivity
+    private lateinit var mediaController: MediaController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,15 +59,20 @@ class VideoFragment : Fragment() {
 
 
     private fun setUpVideoView(videoPath: String) {
-        val mediaController = MediaController(requireContext())
+        mediaController = MediaController(requireContext())
         mediaController.setAnchorView(binding.videoView)
 
         binding.videoView.apply {
             setMediaController(mediaController)
             setVideoPath(videoPath)
-            start()
             setOnCompletionListener { mediaController.show() }
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mediaController.hide()
+        binding.videoView.pause()
     }
 
     companion object {
