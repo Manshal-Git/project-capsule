@@ -112,8 +112,9 @@ class CapsuleActivity : AppCompatActivity() {
     }
 
     private fun showTimeOverDialog() {
+        // can cause a crash due to called through flow's coroutine
         try {
-            confirmDialog
+            AlertDialog.Builder(this)
                 .setTitle("Time Over !")
                 .setMessage("Don't worry, You can come back again !")
                 .setCancelable(false)
