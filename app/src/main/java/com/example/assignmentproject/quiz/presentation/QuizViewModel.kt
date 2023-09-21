@@ -23,6 +23,8 @@ class QuizViewModel(private val quizRepository: QuizRepository) : ViewModel() {
         _currentQuiz.postValue(value)
     }
 
+    var answeredCorrectly = 0
+
     fun getQuizForChapter(){
         setQuestionsState(Response.Loading(0.0))
         viewModelScope.launch {

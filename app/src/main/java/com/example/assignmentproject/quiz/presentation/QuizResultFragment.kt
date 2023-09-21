@@ -20,8 +20,8 @@ const val TOTAL = "total"
 class QuizResultFragment : Fragment() {
 
     lateinit var binding: FragmentQuizResultBinding
-    var solved = 0
-    var totalQuiz = 0
+    private var solved = 0
+    private var totalQuiz = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         solved = arguments?.getInt(SOLVED)!!
@@ -47,20 +47,18 @@ class QuizResultFragment : Fragment() {
 
     private fun setUpResultSummary() {
         binding.tvResultSummary.text = when {
-            solved < 3 -> "Need Revision !"
-            solved > 3 -> "Well done !"
-            else -> "You can Improve !"
+            solved < 3 -> "Need Revision ! 👍"
+            solved > 3 -> "Well done ! ✌"
+            else -> "You can Improve ! 🤞"
         }
 
         val resultColorId = when {
-            solved < 3 -> R.color.fadeRed
-            solved > 3 -> R.color.fadeGreen
-            else -> R.color.smooth_blue
+            solved < 3 -> R.color.TintRed
+            solved > 3 -> R.color.TintGreen
+            else -> R.color.solid_blue
         }
 
-        binding.root.backgroundTintList = AppCompatResources.getColorStateList(
-            requireContext(), resultColorId
-        )
+        binding.tvResultSummary.setTextColor(resultColorId)
     }
 
     private fun setUpSolved() {

@@ -103,6 +103,9 @@ class QuizSessionFragment : Fragment() {
     private fun onOptionClick(v: View) {
         val correctAnswer = viewModel.currentQuiz.value?.correctAnswer!!
         val selectedAnswer = (v as Button).text as String
+        if (correctAnswer == selectedAnswer){
+            viewModel.answeredCorrectly++
+        }
         highlightAnswer(correctAnswer, selectedAnswer)
         lifecycleScope.launch {
             // delay to show highlighted answer for a second then go for next quiz
@@ -115,7 +118,7 @@ class QuizSessionFragment : Fragment() {
                 containerId = R.id.quizFragmentContainer,
                 extras = {
                     Bundle().apply {
-                        putInt(SOLVED,2)
+                        putInt(SOLVED,viewModel.answeredCorrectly)
                         putInt(TOTAL,5)
                     }
                 },
