@@ -10,4 +10,7 @@
 
     <color name="solid_blue">#208FDF</color>
     <color name="smooth_blue">#A9DBFF</color>
+
+    <color name="TintGreen">#16d836</color>
+    <color name="TintRed">#E94539</color>
 </resources>

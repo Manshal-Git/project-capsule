@@ -28,6 +28,7 @@ class CapsulePagerAdapter(
         private val TAB_TITLES = arrayOf(
             R.string.video,
             R.string.notes,
+            R.string.quiz
         )
     }
 }

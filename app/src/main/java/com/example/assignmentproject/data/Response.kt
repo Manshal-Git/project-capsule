@@ -1,7 +1,7 @@
 package com.example.assignmentproject.data
 
-sealed class Response<T> {
-    class Loading<T>(val progress: Double) : Response<T>()
-    class Success<T>(val data: T) : Response<T>()
-    class Error<T>(val error : String,val e : Exception? = null) : Response<T>()
+sealed class Response<T>(var process: Double? = null,var error : String? = null,var data : T? = null) {
+    class Loading<T>(progress: Double) : Response<T>(process = progress)
+    class Success<T>(data: T) : Response<T>(data = data)
+    class Error<T>(error : String,val e : Exception? = null) : Response<T>(error = error)
 }

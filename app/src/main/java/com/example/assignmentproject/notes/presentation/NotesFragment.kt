@@ -13,6 +13,7 @@ import com.example.assignmentproject.data.Response
 import com.example.assignmentproject.databinding.FragmentNotesBinding
 import com.example.assignmentproject.notes.domain.Note
 import com.example.assignmentproject.utils.extension.changeFragment
+import org.koin.android.ext.android.get
 
 /**
  * A simple [Fragment] subclass.
@@ -24,7 +25,7 @@ class NotesFragment : Fragment() {
     lateinit var binding: FragmentNotesBinding
     private lateinit var parentActivity : CapsuleActivity
 
-    private val viewModel : NotesViewModel by viewModels{ NotesViewModelFactory(requireActivity()) }
+    private val viewModel : NotesViewModel = get()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +49,7 @@ class NotesFragment : Fragment() {
                 is Response.Loading -> {
                 }
                 is Response.Success -> {
-                    setUpNotesContent(it.data)
+                    setUpNotesContent(it.data!!)
                 }
             }
         }

@@ -4,11 +4,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.assignmentproject.databinding.ActivityCapsuleBinding
 import com.example.assignmentproject.notes.presentation.NotesFragment
+import com.example.assignmentproject.quiz.QuizFragment
 import com.example.assignmentproject.video.VideoFragment
 
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
+
 class CapsuleActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCapsuleBinding
@@ -30,7 +31,8 @@ class CapsuleActivity : AppCompatActivity() {
     private fun setUpViewPager() {
         val fragments = listOf(
             VideoFragment.newInstance(),
-            NotesFragment.newInstance()
+            NotesFragment.newInstance(),
+            QuizFragment.newInstance()
         )
         val capsulePagerAdapter = CapsulePagerAdapter(
             this,

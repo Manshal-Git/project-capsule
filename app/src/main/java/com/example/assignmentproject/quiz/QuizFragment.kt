@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.assignmentproject.R
+import com.example.assignmentproject.databinding.FragmentQuizBinding
+import com.example.assignmentproject.utils.extension.changeFragment
 
 /**
  * A simple [Fragment] subclass.
@@ -13,6 +15,8 @@ import com.example.assignmentproject.R
  * create an instance of this fragment.
  */
 class QuizFragment : Fragment() {
+
+    lateinit var binding: FragmentQuizBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +28,12 @@ class QuizFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quiz, container, false)
+        binding = FragmentQuizBinding.inflate(layoutInflater)
+        changeFragment(
+            QuizSessionFragment.newInstance(),
+            containerId = binding.root.id
+        )
+        return binding.root
     }
 
     companion object {
