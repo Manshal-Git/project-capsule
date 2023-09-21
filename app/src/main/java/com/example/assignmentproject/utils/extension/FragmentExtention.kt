@@ -8,7 +8,7 @@ fun Fragment.changeFragment(
     fragment: Fragment,
     transition : Int? = null,
     extras: (() -> Bundle)? = null,
-    containerId : Int = R.id.bottomFrame  // Self container id is Default
+    containerId : Int
 ) {
     parentFragmentManager
         .beginTransaction()

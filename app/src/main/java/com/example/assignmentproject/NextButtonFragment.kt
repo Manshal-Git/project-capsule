@@ -40,18 +40,12 @@ class NextButtonFragment private constructor(): Fragment() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @return A new instance of fragment VideoFragment.
-         */
 
         @JvmStatic
-        fun newInstance(title : String,subTitle : String,selectedTabIndex : Int,changeTab : (Int) -> Unit) =
+        fun newInstance(title : String, message : String, selectedTabIndex : Int, changeTab : (Int) -> Unit) =
             NextButtonFragment().apply {
                 this.title = title
-                description = subTitle
+                description = message
                 this.selectedTabIndex = selectedTabIndex
                 onClick = changeTab
             }

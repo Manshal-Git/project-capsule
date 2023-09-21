@@ -4,12 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".video.VideoFragment">
+    tools:context=".video.VideoFragment"
+    android:padding="@dimen/dimen_medium">
 
     
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Notes" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="128dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/tvNoteTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Notes"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/dimen_medium"
+                android:layout_marginTop="56dp"/>
+
+            <TextView
+                android:id="@+id/tvNoteContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notes"
+                android:textSize="16sp"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/gotoQuizFrame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        />
 
 </FrameLayout>

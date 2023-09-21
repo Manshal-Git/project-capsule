@@ -2,11 +2,9 @@ package com.example.assignmentproject
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager.widget.ViewPager
 import com.example.assignmentproject.databinding.ActivityCapsuleBinding
-import com.example.assignmentproject.notes.NotesFragment
+import com.example.assignmentproject.notes.presentation.NotesFragment
 import com.example.assignmentproject.video.VideoFragment
-import com.google.android.material.tabs.TabLayout
 
 import dagger.hilt.android.AndroidEntryPoint
 

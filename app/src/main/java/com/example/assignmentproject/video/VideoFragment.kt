@@ -50,7 +50,8 @@ class VideoFragment : Fragment() {
                 "Learn more from summarized notes",
                 0,
                 parentActivity::changeTab
-            )
+            ),
+            containerId = R.id.gotoNotesFrame
         )
     }
 

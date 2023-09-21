@@ -1,4 +1,4 @@
-package com.example.assignmentproject.notes
+package com.example.assignmentproject.notes.domain
 
 data class Note(
     val title : String,
