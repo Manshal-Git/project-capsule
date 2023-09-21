@@ -10,7 +10,7 @@ import org.koin.dsl.module
 
 val appModule = module {
 
-    factory {
+    single {
         QuizRepoImpl(androidContext())
     }
 

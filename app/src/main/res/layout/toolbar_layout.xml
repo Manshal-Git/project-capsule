@@ -31,5 +31,14 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tvSessionTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_gravity="end|center_vertical"
+        android:layout_marginEnd="@dimen/dimen_medium"
+        />
 
 </FrameLayout>

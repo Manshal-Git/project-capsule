@@ -19,7 +19,8 @@
             android:name=".CapsuleActivity"
             android:exported="true"
             android:label="@string/title_activity_main"
-            android:theme="@style/Theme.AssignmentProject">
+            android:theme="@style/Theme.AssignmentProject"
+            android:screenOrientation="userPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
