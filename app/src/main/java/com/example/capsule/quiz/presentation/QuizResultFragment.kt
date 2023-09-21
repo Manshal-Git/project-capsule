@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.lifecycle.lifecycleScope
 import com.example.capsule.R
 import com.example.capsule.databinding.FragmentQuizResultBinding
@@ -70,7 +71,9 @@ class QuizResultFragment : Fragment() {
             else -> R.color.solid_blue
         }
 
-        binding.tvResultSummary.setTextColor(resultColorId)
+        binding.tvResultSummary.setTextColor(
+            AppCompatResources.getColorStateList(requireActivity(),resultColorId)
+        )
     }
 
     private fun setUpSolved() {
