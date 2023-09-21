@@ -13,4 +13,6 @@
 
     <color name="TintGreen">#16d836</color>
     <color name="TintRed">#E94539</color>
+    <color name="fadeRed">#B84F48</color>
+    <color name="fadeGreen">#42D67D</color>
 </resources>

@@ -1,11 +1,10 @@
-package com.example.assignmentproject.quiz
+package com.example.assignmentproject.quiz.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.assignmentproject.R
 import com.example.assignmentproject.databinding.FragmentQuizBinding
 import com.example.assignmentproject.utils.extension.changeFragment
 

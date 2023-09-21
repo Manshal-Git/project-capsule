@@ -1,4 +1,4 @@
-package com.example.assignmentproject.quiz
+package com.example.assignmentproject.quiz.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.lifecycleScope
 import com.example.assignmentproject.R
 import com.example.assignmentproject.data.Response
 import com.example.assignmentproject.databinding.FragmentQuizSessionBinding
+import com.example.assignmentproject.utils.extension.changeFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -108,7 +110,17 @@ class QuizSessionFragment : Fragment() {
             try {
                 viewModel.showNextQuiz()
             } catch (e : ArrayIndexOutOfBoundsException){
-            // todo : changeFragment()
+            changeFragment(
+                QuizResultFragment.newInstance(),
+                containerId = R.id.quizFragmentContainer,
+                extras = {
+                    Bundle().apply {
+                        putInt(SOLVED,2)
+                        putInt(TOTAL,5)
+                    }
+                },
+                transition = FragmentTransaction.TRANSIT_FRAGMENT_OPEN
+            )
             Toast.makeText(requireContext(), "Complete", Toast.LENGTH_SHORT).show()
         }
     }
@@ -126,7 +138,7 @@ fun highlightAnswer(correctAns: String, selectedAns: String) {
 }
 
 private fun changeColor(v: View, colorId: Int) {
-    CoroutineScope(Dispatchers.Main).launch {
+    lifecycleScope.launch {
         v.backgroundTintList = AppCompatResources.getColorStateList(requireContext(), colorId)
         delay(1.seconds)
         v.backgroundTintList =

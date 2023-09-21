@@ -50,4 +50,7 @@
     <string name="up_next">Up Next:</string>
     <string name="quiz">Quiz</string>
     <string name="quizCount">Question %1$d/%2$d</string>
+    <string name="quiz_completed">Quiz Completed</string>
+    <string name="solved_messege">You have solved \n%1$d/%2$d questions</string>
+    <string name="back_to_home">Back to Home</string>
 </resources>

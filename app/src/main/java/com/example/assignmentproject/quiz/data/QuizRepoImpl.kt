@@ -1,6 +1,8 @@
-package com.example.assignmentproject.quiz
+package com.example.assignmentproject.quiz.data
 
 import android.content.Context
+import com.example.assignmentproject.quiz.domain.Quiz
+import com.example.assignmentproject.quiz.domain.QuizRepository
 import kotlinx.coroutines.delay
 
 class QuizRepoImpl(private val context : Context) : QuizRepository {

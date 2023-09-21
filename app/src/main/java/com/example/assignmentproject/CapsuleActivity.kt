@@ -4,10 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.assignmentproject.databinding.ActivityCapsuleBinding
 import com.example.assignmentproject.notes.presentation.NotesFragment
-import com.example.assignmentproject.quiz.QuizFragment
+import com.example.assignmentproject.quiz.presentation.QuizFragment
 import com.example.assignmentproject.video.VideoFragment
-
-import dagger.hilt.android.AndroidEntryPoint
 
 
 class CapsuleActivity : AppCompatActivity() {

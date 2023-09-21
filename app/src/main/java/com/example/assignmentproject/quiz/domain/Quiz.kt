@@ -1,4 +1,4 @@
-package com.example.assignmentproject.quiz
+package com.example.assignmentproject.quiz.domain
 
 data class Quiz(
     val id : Int,

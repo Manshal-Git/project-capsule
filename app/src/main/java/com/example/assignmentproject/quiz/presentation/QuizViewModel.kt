@@ -1,10 +1,12 @@
-package com.example.assignmentproject.quiz
+package com.example.assignmentproject.quiz.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.assignmentproject.data.Response
+import com.example.assignmentproject.quiz.domain.Quiz
+import com.example.assignmentproject.quiz.domain.QuizRepository
 import kotlinx.coroutines.launch
 
 class QuizViewModel(private val quizRepository: QuizRepository) : ViewModel() {
