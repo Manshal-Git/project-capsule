@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.assignmentproject'
+    namespace 'com.example.capsule'
     compileSdk 33
 
     defaultConfig {
