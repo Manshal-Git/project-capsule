@@ -1,6 +1,7 @@
 package com.example.assignmentproject.quiz.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,9 +14,10 @@ import androidx.lifecycle.lifecycleScope
 import com.example.assignmentproject.R
 import com.example.assignmentproject.data.Response
 import com.example.assignmentproject.databinding.FragmentQuizSessionBinding
+import com.example.assignmentproject.quiz.domain.Quiz
 import com.example.assignmentproject.utils.extension.changeFragment
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import com.example.assignmentproject.utils.extension.hide
+import com.example.assignmentproject.utils.extension.show
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
@@ -38,10 +40,6 @@ class QuizSessionFragment : Fragment() {
         )
     }
     private val viewModel: QuizViewModel = get()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,12 +56,15 @@ class QuizSessionFragment : Fragment() {
         viewModel.questions.observe(viewLifecycleOwner) {
             when (it) {
                 is Response.Error -> {
+                    logAndShowError(it)
                 }
 
                 is Response.Loading -> {
+                    binding.loadingLayout.show()
                 }
 
                 is Response.Success -> {
+                    binding.loadingLayout.hide()
                     viewModel.showNextQuiz()
                 }
             }
@@ -82,6 +83,11 @@ class QuizSessionFragment : Fragment() {
         }
 
         viewModel.getQuizForChapter()
+    }
+
+    private fun logAndShowError(e: Response.Error<List<Quiz>>) {
+        Log.e("Questions",e.exception.toString())
+        Toast.makeText(requireContext(), e.msg, Toast.LENGTH_SHORT).show()
     }
 
     private fun setUpQuizNo(id: Int) {
@@ -124,7 +130,6 @@ class QuizSessionFragment : Fragment() {
                 },
                 transition = FragmentTransaction.TRANSIT_FRAGMENT_OPEN
             )
-            Toast.makeText(requireContext(), "Complete", Toast.LENGTH_SHORT).show()
         }
     }
 }

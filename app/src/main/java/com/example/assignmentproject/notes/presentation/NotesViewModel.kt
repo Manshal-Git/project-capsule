@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.assignmentproject.data.Response
 import com.example.assignmentproject.notes.domain.Note
 import com.example.assignmentproject.notes.domain.NotesRepository
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class NotesViewModel (
@@ -15,21 +14,15 @@ class NotesViewModel (
 ) : ViewModel() {
 
 
-    private val _notesUIState = MutableLiveData<Response<List<Note>>>()
-    val notesUIState: LiveData<Response<List<Note>>> get() = _notesUIState
-    fun setNotesUIState(value : Response<List<Note>>){
-        _notesUIState.postValue(value)
+    private val _notes = MutableLiveData<Response<List<Note>>>()
+    val notes: LiveData<Response<List<Note>>> get() = _notes
+    private fun setNotes(value : Response<List<Note>>){
+        _notes.postValue(value)
     }
-
-
-    fun getNotes() {
-
-    }
-
     fun getNote(id : Int){
         viewModelScope.launch {
             val note = notesRepository.getNote(id)
-            setNotesUIState(Response.Success(listOf(note)))
+            setNotes(Response.Success(listOf(note)))
         }
     }
 

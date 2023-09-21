@@ -1,9 +1,11 @@
 package com.example.assignmentproject.notes.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.assignmentproject.CapsuleActivity
 import com.example.assignmentproject.NextButtonFragment
@@ -12,6 +14,8 @@ import com.example.assignmentproject.data.Response
 import com.example.assignmentproject.databinding.FragmentNotesBinding
 import com.example.assignmentproject.notes.domain.Note
 import com.example.assignmentproject.utils.extension.changeFragment
+import com.example.assignmentproject.utils.extension.hide
+import com.example.assignmentproject.utils.extension.show
 import org.koin.android.ext.android.get
 
 /**
@@ -41,14 +45,17 @@ class NotesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.notesUIState.observe(viewLifecycleOwner){
+        viewModel.notes.observe(viewLifecycleOwner){
             when(it){
                 is Response.Error -> {
+                    logAndShowError(it)
                 }
                 is Response.Loading -> {
+                    binding.loadingLayout.show()
                 }
                 is Response.Success -> {
                     setUpNotesContent(it.data!!)
+                    binding.loadingLayout.hide()
                 }
             }
         }
@@ -74,6 +81,11 @@ class NotesFragment : Fragment() {
             ),
             containerId = R.id.gotoQuizFrame
         )
+    }
+
+    private fun logAndShowError(e: Response.Error<List<Note>>) {
+        Log.e("Questions",e.exception.toString())
+        Toast.makeText(requireContext(), e.msg, Toast.LENGTH_SHORT).show()
     }
 
     companion object {

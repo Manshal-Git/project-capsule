@@ -6,8 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.lifecycle.lifecycleScope
 import com.example.assignmentproject.R
 import com.example.assignmentproject.databinding.FragmentQuizResultBinding
+import com.example.assignmentproject.utils.extension.hide
+import com.example.assignmentproject.utils.extension.show
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 const val SOLVED = "solved"
 const val TOTAL = "total"
@@ -33,6 +40,14 @@ class QuizResultFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentQuizResultBinding.inflate(layoutInflater)
+        // Artificial processing flow
+        lifecycleScope.launch {
+            binding.loadingLayout.show()
+            binding.resultLayout.hide()
+            delay(1500)
+            binding.loadingLayout.hide()
+            binding.resultLayout.show()
+        }
         return binding.root
     }
 

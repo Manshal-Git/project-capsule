@@ -13,8 +13,7 @@
         layout="@layout/toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_medium"
-        android:layout_marginHorizontal="@dimen/dimen_medium"/>
+        android:layout_margin="@dimen/dimen_medium"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
